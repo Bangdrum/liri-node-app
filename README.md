@@ -1,2 +1,2 @@
 # liri-node-app
-![](liribot.png)
+![](images/liribot.png)
