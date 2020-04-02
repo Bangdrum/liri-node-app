@@ -5,16 +5,16 @@ var moment = require("moment");
 var Spotify = require("node-spotify-api");
 var fs = require("fs");
 
-var movieThis = function (movie) {
+var movieThis = function(movie) {
   if (!movie) {
     movie = "Mr.+Nobody";
   }
   var queryUrl =
     "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
-  request(queryUrl, function (err, response, body) {
+  request(queryUrl, function(err, response, body) {
     if (!err && response.statusCode === 200) {
       var movieInfo = JSON.parse(body);
-
+      outputData("-----------------------------------------------------");
       outputData("Title: " + movieInfo.Title);
       outputData("Release year: " + movieInfo.Year);
       outputData("IMDB Rating: " + movieInfo.imdbRating);
@@ -23,25 +23,26 @@ var movieThis = function (movie) {
       outputData("Language: " + movieInfo.Language);
       outputData("Plot: " + movieInfo.Plot);
       outputData("Actors: " + movieInfo.Actors);
+      outputData("-----------------------------------------------------");
     }
   });
 };
 
-var concertThis = function (artist) {
+var concertThis = function(artist) {
   var region = "";
   var queryUrl =
     "https://rest.bandsintown.com/artists/" +
     artist.replace(" ", "+") +
     "/events?app_id=codingbootcamp";
 
-  request(queryUrl, function (err, response, body) {
+  request(queryUrl, function(err, response, body) {
     if (!err && response.statusCode === 200) {
       var concertInfo = JSON.parse(body);
       outputData(artist + " concert information:");
 
       for (i = 0; i < 3; i++) {
         region = concertInfo[i].venue.region;
-
+        outputData("-----------------------------------------------------");
         outputData("Location: " + concertInfo[i].venue.city + ", " + region);
 
         outputData("Venue: " + concertInfo[i].venue.name);
@@ -49,36 +50,42 @@ var concertThis = function (artist) {
         outputData(
           "Date: " + moment(concertInfo[i].datetime).format("MM/DD/YYYY")
         );
+        outputData("-----------------------------------------------------");
       }
     }
   });
 };
 
-var spotifyThisSong = function (song) {
+var spotifyThisSong = function(song) {
   if (!song) {
     song = "The Sign Ace of Base";
   }
 
   var spotify = new Spotify(keys.spotify);
-  spotify.search({
-    type: "track",
-    query: song,
-    limit: 1
-  }, function (err, data) {
-    if (err) {
-      return console.log(err);
-    }
+  spotify.search(
+    {
+      type: "track",
+      query: song,
+      limit: 1
+    },
+    function(err, data) {
+      if (err) {
+        return console.log(err);
+      }
 
-    var songInfo = data.tracks.items[0];
-    outputData(songInfo.artists[0].name);
-    outputData(songInfo.name);
-    outputData(songInfo.album.name);
-    outputData(songInfo.preview_url);
-  });
+      var songInfo = data.tracks.items[0];
+      outputData("-----------------------------------------------------");
+      outputData(songInfo.artists[0].name);
+      outputData(songInfo.name);
+      outputData(songInfo.album.name);
+      outputData(songInfo.preview_url);
+      outputData("-----------------------------------------------------");
+    }
+  );
 };
 
-var doWhatItSays = function () {
-  fs.readFile("random.txt", "utf8", function (err, data) {
+var doWhatItSays = function() {
+  fs.readFile("random.txt", "utf8", function(err, data) {
     if (err) {
       return console.log(err);
     }
@@ -88,17 +95,17 @@ var doWhatItSays = function () {
   });
 };
 
-var outputData = function (data) {
+var outputData = function(data) {
   console.log(data);
 
-  fs.appendFile("log.txt", "\r\n" + data, function (err) {
+  fs.appendFile("log.txt", "\r\n" + data, function(err) {
     if (err) {
       return console.log(err);
     }
   });
 };
 
-var runAction = function (func, parm) {
+var runAction = function(func, parm) {
   switch (func) {
     case "concert-this":
       concertThis(parm);

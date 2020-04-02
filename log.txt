@@ -25,3 +25,29 @@ Backstreet Boys
 I Want It That Way
 The Hits--Chapter One
 https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=7d976cb7b13e4011b81a525e8d3b22aa
+blink 182 concert information:
+Location: Milwaukee, WI
+Venue: American Family Insurance Amphitheater
+Location: Lansing, MI
+Date: 06/28/2020
+Venue: Cooley Law School Stadium
+Date: 07/10/2020
+Location: Washington, PA
+Venue: Four Chord Music Festival
+Date: 07/11/2020
+blink 182 concert information:
+-----------------------------------------------------
+Location: Milwaukee, WI
+-----------------------------------------------------
+Location: Lansing, MI
+-----------------------------------------------------
+Venue: Cooley Law School Stadium
+Date: 07/10/2020
+-----------------------------------------------------
+-----------------------------------------------------
+Date: 06/28/2020
+Location: Washington, PA
+Venue: Four Chord Music Festival
+Date: 07/11/2020
+-----------------------------------------------------
+Venue: American Family Insurance Amphitheater
